@@ -1,0 +1,25 @@
+import pandas as pd
+from pathlib import Path
+
+def main():
+    print("Yellow Taxi Data Pipeline Started!")
+
+    data_folder = Path("data")
+
+    if not data_folder.exists():
+        print("Data folder not found.")
+        return
+
+    csv_files = list(data_folder.glob("*.csv"))
+
+    if not csv_files:
+        print("No CSV files found.")
+        return
+
+    df = pd.read_csv(csv_files[0])
+
+    print("Dataset loaded successfully!")
+    print(df.head())
+
+if __name__ == "__main__":
+    main()
